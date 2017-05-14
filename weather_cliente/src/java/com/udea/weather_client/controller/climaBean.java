@@ -223,7 +223,7 @@ public class climaBean {
         String envio=guardarClima(ciudad, tempActualFarenheith, tempActualCentigrados, humedad, tipo_nubosidad, precipitacion, tempActualFarenheith2, tempActualCentigrados2, humedad2, tipo_nubosidad2, precipitacion2, tempActualFarenheith3, tempActualCentigrados3, humedad3, tipo_nubosidad3, precipitacion3);
         FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_INFO,envio,"....");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        limpiarForm();
+        
         return"result";
     }
     
@@ -253,8 +253,9 @@ public class climaBean {
         return climas;
     }
     
-    public void limpiarForm(){
+    public String limpiarForm(){
         this.ciudad=null;
+        return "index";
     }
     
 }
