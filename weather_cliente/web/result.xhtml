@@ -3,67 +3,138 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+    
     <h:head>
-        <title>Facelet Title</title>
+        <title>getClima</title>
+        <link rel="stylesheet" href="styles.css" />
     </h:head>
-    <h:body>
-        <h:form id="verClimas" rendered="true">
-            <p:panel header="climas Registrados">
-                <p:dataTable id="resultados" value="#{climaBean.obtenerClimas()}" var="cl" paginator="true" rows="6" resizableColumns="true">
-                    <p:column headerText="ciudad" resizable="true">
+    <h:body >
+        <div>
+        <h1>
+            Publicación de resultados
+        </h1>
+        </div>
+        <h:form >
+            <p:panel header="Clima de la ciudad consultada">
+                <p:dataScroller chunkSize="10" value="#{climaBean}" var="cargar" >
+                    <h:panelGrid columns="1" cellpadding="4">
+                    <h:outputText value="#{cargar.ciudad}"/>
+                    <h:outputText value="#{cargar.tempActualFarenheith} -->Temperatura farenheit hoy" />
+                    <h:outputText value="#{cargar.tempActualCentigrados} --> Temperatura centigrados hoy"/>
+                    <h:outputText value="#{cargar.humedad} --> humedad hoy"/>
+                    <h:outputText value="#{cargar.tipo_nubosidad} --> tipo nubosidad hoy"/>
+                    <h:outputText value="#{cargar.precipitacion} --> probabilidad precipitacion hoy"/>
+                    <h:outputText value="#{cargar.tempActualFarenheith2} -->Temperatura farenheit mañana"/>
+                    <h:outputText value="#{cargar.tempActualCentigrados2} --> Temperatura centigrados mañana"/>
+                    <h:outputText value="#{cargar.humedad2} --> humedad mañana"/>
+                    <h:outputText value="#{cargar.tipo_nubosidad2} --> tipo nubosidad mañana"/>
+                    <h:outputText value="#{cargar.precipitacion2} --> probabilidad precipitacion mañana"/>
+                    <h:outputText value="#{cargar.tempActualFarenheith3} -->Temperatura farenheit pasado-mañana"/>
+                    <h:outputText value="#{cargar.tempActualCentigrados3} --> Temperatura centigrados pasado-mañana"/>
+                    <h:outputText value="#{cargar.humedad3} --> humedad pasado-mañana"/>
+                    <h:outputText value="#{cargar.tipo_nubosidad3} --> tipo nubosidad pasado-mañana"/>
+                    <h:outputText value="#{cargar.precipitacion3} --> probabilidad precipitacion pasado-mañana"/>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </p:panel>
+        </h:form>
+        
+        <h:panelGrid/>
+        
+        <h:form id="verClimas2" rendered="true" >
+            <p:panel header="Historial de climas consultados" footer="Desarrollado por Sergio Marriaga">
+                <p:dataTable id="resultados" value="#{climaBean.obtenerClimas()}" var="cl" paginator="true" rows="7" resizableColumns="true" >
+                    
+                    <p:columnGroup type="header">
+                        
+                        <p:row>
+                            <p:column rowspan="3" headerText="Ciudad"/>
+                            <p:column colspan="15" headerText="Climas"/>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="3" headerText="Temp Farenheith"/>
+                            <p:column colspan="3" headerText="Temp Centigrados"/>
+                            <p:column colspan="3" headerText="humedad"/>
+                            <p:column colspan="3" headerText="Tipo Nubosidad"/>
+                            <p:column colspan="3" headerText="precipitacion"/>
+                         </p:row>
+                        <p:row>
+                            <p:column colspan="1" headerText="hoy"/>
+                            <p:column colspan="1" headerText="mañana"/>
+                            <p:column colspan="1" headerText="pasado-mañana"/>
+                            <p:column colspan="1" headerText="hoy"/>
+                            <p:column colspan="1" headerText="mañana"/>
+                            <p:column colspan="1" headerText="pasado-mañana"/>
+                            <p:column colspan="1" headerText="hoy"/>
+                            <p:column colspan="1" headerText="mañana"/>
+                            <p:column colspan="1" headerText="pasado-mañana"/>
+                            <p:column colspan="1" headerText="hoy"/>
+                            <p:column colspan="1" headerText="mañana"/>
+                            <p:column colspan="1" headerText="pasado-mañana"/>
+                            <p:column colspan="1" headerText="hoy"/>
+                            <p:column colspan="1" headerText="mañana"/>
+                            <p:column colspan="1" headerText="pasado-mañana"/>
+                        </p:row>
+                        
+                    </p:columnGroup>
+                    
+                    <p:column>
                         <h:outputText value="#{cl.ciudad}"/>
                     </p:column>
-                    <p:column headerText="temperatura hoy farenheith" resizable="true" >
+                    <p:column>
                         <h:outputText value="#{cl.tempactualfarenheith}"/>
                     </p:column>
-                    <p:column headerText="temperatura hoy centigrados" resizable="true" >
-                        <h:outputText value="#{cl.tempactualcentigrados}"/>
-                    </p:column>
-                    <p:column headerText="humedad hoy" resizable="true" >
-                        <h:outputText value="#{cl.humedad}"/>
-                    </p:column>
-                    <p:column headerText="tipo nubosidad hoy" resizable="true" >
-                        <h:outputText value="#{cl.tipoNubosidad}"/>
-                    </p:column>
-                    <p:column headerText="porcentaje precipitacion hoy" resizable="true">
-                        <h:outputText value="#{cl.precipitacion}"/>
-                    </p:column>
-                    <p:column headerText="temperatura mañana farenheith" resizable="true">
+                    <p:column>
                         <h:outputText value="#{cl.tempactualfarenheith2}"/>
                     </p:column>
-                    <p:column headerText="temperatura mañanadia actual centigrados" resizable="true">
-                        <h:outputText value="#{cl.tempactualcentigrados2}"/>
-                    </p:column>
-                    <p:column headerText="humedad mañana" resizable="true">
-                        <h:outputText value="#{cl.humedad2}"/>
-                    </p:column>
-                    <p:column headerText="tipo nubosidad mañana" resizable="true">
-                        <h:outputText value="#{cl.tipoNubosidad2}"/>
-                    </p:column>
-                    <p:column headerText="porcentaje precipitacion mañana" resizable="true">
-                        <h:outputText value="#{cl.precipitacion2}"/>
-                    </p:column>
-                    <p:column headerText="temperatura pasadomañana farenheith" resizable="true">
+                    <p:column>
                         <h:outputText value="#{cl.tempactualfarenheith3}"/>
                     </p:column>
-                    <p:column headerText="temperatura pasadomañana centigrados" resizable="true">
+                    <p:column>
+                        <h:outputText value="#{cl.tempactualcentigrados}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{cl.tempactualcentigrados2}"/>
+                    </p:column>
+                    <p:column>
                         <h:outputText value="#{cl.tempactualcentigrados3}"/>
                     </p:column>
-                    <p:column headerText="humedad pasadomañana" resizable="true">
+                    <p:column>
+                        <h:outputText value="#{cl.humedad}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{cl.humedad2}"/>
+                    </p:column>
+                    <p:column>
                         <h:outputText value="#{cl.humedad3}"/>
                     </p:column>
-                    <p:column headerText="tipo nubosidad pasadomañana" resizable="true">
+                    <p:column>
+                        <h:outputText value="#{cl.tipoNubosidad}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{cl.tipoNubosidad2}"/>
+                    </p:column>
+                    <p:column>
                         <h:outputText value="#{cl.tipoNubosidad3}"/>
                     </p:column>
-                    <p:column headerText="porcentaje precipitacion pasadomañana" resizable="true">
+                    <p:column>
+                        <h:outputText value="#{cl.precipitacion}"/>
+                    </p:column>  
+                    <p:column>
+                        <h:outputText value="#{cl.precipitacion2}"/>
+                    </p:column>
+                    <p:column>
                         <h:outputText value="#{cl.precipitacion3}"/>
                     </p:column>
                     
                     </p:dataTable>
             </p:panel>
         </h:form>
+        
+        <h:panelGrid/>
+        
         <h:form>
-            <p:commandButton id="volver" value="Nuevo clima" ajax="false" action="#{climaBean.limpiarForm()}" />                
+            <p:commandButton id="volver" value="Nuevo clima" ajax="false" action="#{climaBean.limpiarForm()}" icon="ui-icon-star" readonly="true" />                
         </h:form>
     </h:body>
 </html>
