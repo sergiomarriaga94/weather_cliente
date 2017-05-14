@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="verClimas">
+            <p:panel header="climas Registrados">
+                <p:dataTable id="resultados" value="#{climaBean.obtenerClimas()}" var="cl" paginator="true" rows="6">
+                    <p:column headerText="ciudad">
+                        <h:outputText value="#{cl.ciudad}"/>
+                    </p:column>
+                    <p:column headerText="temperatura hoy farenheith">
+                        <h:outputText value="#{cl.tempactualfarenheith}"/>
+                    </p:column>
+                    <p:column headerText="temperatura hoy centigrados">
+                        <h:outputText value="#{cl.tempactualcentigrados}"/>
+                    </p:column>
+                    <p:column headerText="humedad hoy">
+                        <h:outputText value="#{cl.humedad}"/>
+                    </p:column>
+                    <p:column headerText="tipo nubosidad hoy">
+                        <h:outputText value="#{cl.tipoNubosidad}"/>
+                    </p:column>
+                    <p:column headerText="porcentaje precipitacion hoy">
+                        <h:outputText value="#{cl.precipitacion}"/>
+                    </p:column>
+                    <p:column headerText="temperatura mañana farenheith">
+                        <h:outputText value="#{cl.tempactualfarenheith2}"/>
+                    </p:column>
+                    <p:column headerText="temperatura mañanadia actual centigrados">
+                        <h:outputText value="#{cl.tempactualcentigrados2}"/>
+                    </p:column>
+                    <p:column headerText="humedad mañana">
+                        <h:outputText value="#{cl.humedad2}"/>
+                    </p:column>
+                    <p:column headerText="tipo nubosidad mañana">
+                        <h:outputText value="#{cl.tipoNubosidad2}"/>
+                    </p:column>
+                    <p:column headerText="porcentaje precipitacion mañana">
+                        <h:outputText value="#{cl.precipitacion2}"/>
+                    </p:column>
+                    <p:column headerText="temperatura pasadomañana farenheith">
+                        <h:outputText value="#{cl.tempactualfarenheith3}"/>
+                    </p:column>
+                    <p:column headerText="temperatura pasadomañana centigrados">
+                        <h:outputText value="#{cl.tempactualcentigrados3}"/>
+                    </p:column>
+                    <p:column headerText="humedad pasadomañana">
+                        <h:outputText value="#{cl.humedad3}"/>
+                    </p:column>
+                    <p:column headerText="tipo nubosidad pasadomañana">
+                        <h:outputText value="#{cl.tipoNubosidad3}"/>
+                    </p:column>
+                    <p:column headerText="porcentaje precipitacion pasadomañana">
+                        <h:outputText value="#{cl.precipitacion3}"/>
+                    </p:column>
+                    
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

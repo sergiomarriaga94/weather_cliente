@@ -5,8 +5,10 @@
  */
 package com.udea.weather_client.controller;
 
+import com.udea.weather_service.servicio.Clima;
 import com.udea.weather_service.servicio.ClimaWS_Service;
 import java.io.IOException;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
@@ -205,7 +207,8 @@ public class climaBean {
         tempActualCentigrados=Float.toString((((currentWeather.getMainInstance().getTemperature())-32)*5)/9);
         humedad=Float.toString(currentWeather.getMainInstance().getHumidity());
         tipo_nubosidad=tipo_nubosidad_Valor(currentWeather.getCloudsInstance().getPercentageOfClouds());
-        precipitacion=Float.toString(currentWeather.getRainInstance().getRain());
+        precipitacion=Float.toString(dailyForecast.getForecastInstance(0).getRain());
+        System.out.println(precipitacion);
         tempActualFarenheith2=Float.toString(dailyForecast.getForecastInstance(1).getTemperatureInstance().getDayTemperature());
         tempActualCentigrados2=Float.toString((((dailyForecast.getForecastInstance(1).getTemperatureInstance().getDayTemperature())-32)*5)/9);
         humedad2=Float.toString(dailyForecast.getForecastInstance(1).getHumidity());
@@ -221,7 +224,7 @@ public class climaBean {
         FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_INFO,envio,"....");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         limpiarForm();
-        return null;
+        return"result";
     }
     
     
@@ -245,7 +248,13 @@ public class climaBean {
         return tipo_escogido;
     }
     
+    public List<Clima> obtenerClimas(){
+        List<Clima> climas=verClimas();
+        return climas;
+    }
+    
     public void limpiarForm(){
         this.ciudad=null;
     }
+    
 }
